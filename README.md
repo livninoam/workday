@@ -46,7 +46,7 @@ Built with FastAPI, PostgreSQL, Docker, and GitHub Actions CI/CD.
 ├── .env.example
 └── .github/
     └── workflows/
-        └── ci.yml
+        └── build-docker.yml
 
 
 ## 🏃‍♂️ 🚀 How to Run the Project Locally (Step-by-Step)
