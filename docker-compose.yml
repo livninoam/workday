@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14
+    container_name: postgres_dev_env
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dev_env_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: fastapi_dev_env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db/dev_env_db"
+
+volumes:
+  postgres_data:
+
